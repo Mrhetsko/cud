@@ -106,6 +106,82 @@ tensor = torch.tensor([1, 2, 3])
 tensor += 10
 
 
-ic(tensor)
-ic(tensor * 10)
+# ic(tensor)
+# ic(tensor * 10)
 # 2h 35m
+
+# ic(torch.matmul(torch.rand(4, 4), torch.rand(4, 3)))
+
+
+tensor_A = torch.tensor([[1, 2],
+                         [3, 4],
+                         [5, 6]])
+tensor_B = torch.tensor([[7, 10],
+                         [8, 11],
+                          [9, 12]
+                         ])
+
+resab = torch.mm(tensor_A, tensor_B.T)
+# ic(resab)
+# ic(tensor_B.shape)
+# ic(tensor_B.T.shape)
+# 2h 51main
+
+
+x = torch.arange(0, 100, 10)
+
+# ic(torch.min(x))
+# ic(x.min())
+#
+# ic(x.max())
+#
+# ic(x.dtype)
+# y = x.type(torch.float32)
+# ic(y.dtype)
+y = x.type(torch.float32)
+# ic(y.mean())
+
+# ic(y.argmax())
+# ic(y.argmin())
+# ic(y[4])
+
+# 3h 06m
+
+x = torch.arange(1., 10.)
+# x = torch.arange(1., 13.)
+ic(x)
+
+x_reshaped = x.reshape(1, 9)
+ic(x_reshaped, x_reshaped.shape)
+
+# 3h 11m
+# Change the view
+
+z = x.view(1, 9)
+ic(z, z.shape)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
