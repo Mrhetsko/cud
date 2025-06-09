@@ -1,3 +1,4 @@
+import numpy as np
 import torch
 from icecream import ic
 
@@ -149,37 +150,84 @@ y = x.type(torch.float32)
 
 x = torch.arange(1., 10.)
 # x = torch.arange(1., 13.)
-ic(x)
+# ic(x)
 
 x_reshaped = x.reshape(1, 9)
-ic(x_reshaped, x_reshaped.shape)
+# ic(x_reshaped, x_reshaped.shape)
 
 # 3h 11m
 # Change the view
 
 z = x.view(1, 9)
-ic(z, z.shape)
+# ic(z)
+
+# z[:, 0] = 5
+
+# ic(z)
+# ic(x)
 
 
+# Stack
 
+x_stacked = torch.stack([x, x, x, x], dim=0)
 
+# Squeeze
+x_squeezed = x_reshaped.squeeze()
 
+# ic(x_squeezed)
+# ic(x_squeezed.shape)
 
+# Permute
 
+a = torch.rand(2, 3, 5)
+# ic(a)
+# ic(a.size())
 
+b = torch.permute(a, (2, 0, 1))
+# ic(b)
+# ic(b.size())
 
+# c = torch.rand(5, 3, 2)
+# ic(c)
+# d = torch.permute(c, (1, 0, 2)) # size 352
+# ic(d.size())
 
+x = torch.arange(1, 10)
+xx = x.reshape(1, 3, 3)
+# ic(x, x.shape)
+# ic(xx)
 
+# ic(xx[0])
+# ic(xx[0][0])
+# ic(xx[0][2])
+# ic(xx[0, 2])
+# ic(xx[0, 2, 2])
 
+# print(xx[0, 2, 2])
+# ic(xx[0, 2, -1:])
+# ic(xx[0, :, -1])
+# ic(xx[0, :, 2])
 
+# 3h 38 Numpy
 
+array = np.arange(1.0, 8.0)
+tensor = torch.from_numpy(array)
+# ic(array, tensor)
 
+# 3h 46m
 
+RAND_SEED = 3
+torch.manual_seed(RAND_SEED)
+random_ta = torch.rand(3, 3)
 
-
-
-
-
+# torch.manual_seed(RAND_SEED)
+# random_tb = torch.rand(3, 3)
+# ic(random_ta)
+# ic(random_tb)
+#
+ic(torch.cuda.device_count())
+ten = torch.tensor(2, device=device)
+ic(ten.device)
 
 
 
